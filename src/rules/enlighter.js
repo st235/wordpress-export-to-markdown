@@ -6,7 +6,7 @@ const rules = {};
 
 rules.enlighter = {
     filter: node => node.nodeName === 'PRE' && node.getAttribute('class') === 'EnlighterJSRAW',
-    replacement: (content, _) => `${MARKDOWN_CODE_BLOCK}\n${content}\n${MARKDOWN_CODE_BLOCK}`
+    replacement: (_, node) => `${MARKDOWN_CODE_BLOCK}\n${node.textContent}\n${MARKDOWN_CODE_BLOCK}`
 }
 
 function enlighter(turndownService) {
