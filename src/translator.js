@@ -1,5 +1,8 @@
 const turndown = require('turndown');
-const turndownPluginGfm = require('turndown-plugin-gfm');
+
+const tables = require('./rules/tables');
+const enlighter = require('./rules/enlighter');
+
 
 function initTurndownService() {
 	const turndownService = new turndown({
@@ -8,7 +11,8 @@ function initTurndownService() {
 		codeBlockStyle: 'fenced'
 	});
 
-	turndownService.use(turndownPluginGfm.tables);
+	turndownService.use(tables);
+	turndownService.use(enlighter);
 
 	// preserve embedded tweets
 	turndownService.addRule('tweet', {
